@@ -6,11 +6,18 @@
 	<string>nop</string>
 	<key>command</key>
 	<string># documented all selected directories
+files=""
+eval arr=("$TM_SELECTED_FILES")
+for (( i = 0; i &lt; ${#arr[@]}; i++ )); do
+  files="$files ${arr[$i]}"
+done
 # if none, run against the entire project
-eval dirs="${TM_SELECTED_FILES:-$TM_PROJECT_DIRECTORY}"
+if [[ -z $files ]]; then
+  files="$TM_PROJECT_DIRECTORY"
+fi
 
 # generate the docs
-"${TM_PYTHON:-python}" "$TM_BUNDLE_SUPPORT/bin/yuidoc/bin/yuidoc.py" $dirs -p "$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/parser" -o "$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/generator" -t "$TM_BUNDLE_SUPPORT/bin/yuidoc/template" -v 1.0.0 -Y 2
+"${TM_PYTHON:-python}" "$TM_BUNDLE_SUPPORT/bin/yuidoc/bin/yuidoc.py" $files -p "$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/parser" -o "$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/generator" -t "$TM_BUNDLE_SUPPORT/bin/yuidoc/template" -v 1.0.0 -Y 2
 
 # view the docs
 echo "&lt;meta http-equiv='Refresh' content='0; tm-file:///$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/generator/index.html'&gt;"</string>
@@ -19,7 +26,7 @@ echo "&lt;meta http-equiv='Refresh' content='0; tm-file:///$TM_BUNDLE_SUPPORT/bi
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>^@d</string>
+	<string>^@y</string>
 	<key>name</key>
 	<string>Document with YUI Doc</string>
 	<key>output</key>

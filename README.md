@@ -1,6 +1,6 @@
-JS Lint? Check.  
-Unit tests? Check.  
-Documentation? Umm...  
+JS Lint? _Check._  
+Unit tests? _Check._  
+Documentation? _Umm..._  
 
 Don't worry -- documenting your JavaScript can be fun and easy! (Well, maybe just easy.)
  
@@ -29,10 +29,12 @@ Read the [YUI Doc tag reference][ydop] for a description of each tag and how it'
 
 ### Commands
 
-* **Document with YUI Doc** (⌃⌘D)
-Generates HTML documentation from commented JavaScript source code using YUI Doc 1.0.0b1 and displays it in TextMate's Web Preview window. Select a directory (or multiple directories) to document and then run the command. If no directories are selected, the command will generate documentation for all JS files in the project drawer.
+* **Document with YUI Doc** (⌃⌘Y)
+Generates HTML documentation from commented JavaScript source code using YUI Doc 1.0.0b1 and displays it in TextMate's Web Preview window. Select a directory (or multiple directories) to document and then run the command. If no directories are selected, the command will generate documentation for all JS files in the project drawer.  
+You can find the generated documentation in  
+`~/Library/Application Support/TextMate/Bundles/YUI Doc.tmbundle/Support/bin/yuidoc/out`
 
-* **View Tag Reference** (⌃⌘D)
+* **View Tag Reference** (⌃⌘Y)
 Opens the [YUI Doc tag reference][ydot] in TextMate's Web Preview window.
 
 ## License
