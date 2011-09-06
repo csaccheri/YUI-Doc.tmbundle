@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string># documented all selected directories
+# if none, run against the entire project
+eval dirs="${TM_SELECTED_FILES:-$TM_PROJECT_DIRECTORY}"
+
+# generate the docs
+"${TM_PYTHON:-python}" "$TM_BUNDLE_SUPPORT/bin/yuidoc/bin/yuidoc.py" $dirs -p "$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/parser" -o "$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/generator" -t "$TM_BUNDLE_SUPPORT/bin/yuidoc/template" -v 1.0.0 -Y 2
+
+# view the docs
+echo "&lt;meta http-equiv='Refresh' content='0; tm-file:///$TM_BUNDLE_SUPPORT/bin/yuidoc/out/docs/generator/index.html'&gt;"</string>
+	<key>fallbackInput</key>
+	<string>scope</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^@d</string>
+	<key>name</key>
+	<string>Document with YUI Doc</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.js, source.js.yui, -entity.name.tag.script.html</string>
+	<key>uuid</key>
+	<string>D7E79ED8-150A-4E07-92CE-3E239996EBEF</string>
+</dict>
+</plist>
